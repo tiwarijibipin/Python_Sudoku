@@ -1,15 +1,117 @@
-#sudoku-board {
-    display: grid;
-    grid-template-columns: repeat(9, 40px);
-    grid-template-rows: repeat(9, 40px);
-    gap: 2px;
-    margin-bottom: 20px;
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
+/* Title */
+h1 {
+    margin-bottom: 20px;
+    font-size: 42px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+/* Sudoku Board */
+#sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(9, 55px);
+    grid-template-rows: repeat(9, 55px);
+    gap: 0;
+    background: #ffffff;
+    padding: 6px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* Cells */
 .cell {
-    width: 40px;
-    height: 40px;
+    width: 55px;
+    height: 55px;
     text-align: center;
-    font-size: 20px;
-    border: 1px solid #ccc;
+    font-size: 24px;
+    font-weight: bold;
+    border: 1px solid #cbd5e1;
+    outline: none;
+    transition: all 0.2s ease;
+    background-color: #f8fafc;
+    color: #111827;
+}
+
+/* Editable Cells */
+.cell:not(:disabled) {
+    background-color: #ffffff;
+}
+
+/* Fixed Cells */
+.cell:disabled {
+    background-color: #e2e8f0;
+    color: #0f172a;
+}
+
+/* Hover Effect */
+.cell:hover {
+    background-color: #dbeafe;
+}
+
+/* Focus Effect */
+.cell:focus {
+    background-color: #bfdbfe;
+    border: 2px solid #2563eb;
+    z-index: 2;
+    position: relative;
+}
+
+/* Thick Borders for 3x3 Boxes */
+.cell:nth-child(3n) {
+    border-right: 2px solid #334155;
+}
+
+.cell:nth-child(9n) {
+    border-right: 1px solid #cbd5e1;
+}
+
+/* Horizontal Box Borders */
+.cell:nth-child(n + 19):nth-child(-n + 27),
+.cell:nth-child(n + 46):nth-child(-n + 54) {
+    border-bottom: 2px solid #334155;
+}
+
+/* Buttons Container */
+.buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+}
+
+/* Buttons */
+button {
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    background: #2563eb;
+    color: white;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.4);
+}
+
+/* Button Hover */
+button:hover {
+    transform: translateY(-2px);
+    background: #1d4ed8;
+}
+
+/* Button Click */
+button:active {
+    transform: scale(0.96);
 }

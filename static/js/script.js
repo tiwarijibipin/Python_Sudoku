@@ -19,9 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     newGameBtn.addEventListener('click', () => {
-        fetch('/generate-puzzle')
+        // --- THE KEY CHANGE IS HERE ---
+        // Changed from a simple GET to a POST request
+        fetch('/generate-puzzle', { method: 'POST' })
             .then(response => response.json())
-            .then(data => generateBoard(data.board));
+            .then(data => {
+                console.log("BROWSER: Received puzzle with ID:", data.debug_id);
+                generateBoard(data.board);
+            });
     });
 
     solveBtn.addEventListener('click', () => {
@@ -38,13 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         fetch('/solve-puzzle', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ board: board })
         })
-            .then(response => response.json())
-            .then(data => generateBoard(data.solution));
+        .then(response => response.json())
+        .then(data => generateBoard(data.solution));
     });
 
     // Initial board generation
