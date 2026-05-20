@@ -2,8 +2,7 @@
 
 A browser-based Sudoku game built using Python and the Flask web framework. This application allows users to play new Sudoku puzzles of medium difficulty and see the solution with the click of a button.
 
-![Sudoku Game Screenshot](https://i.imgur.com/3O4Zq1g.png)
-*(Note: You can replace the link above with a screenshot of your own running application if you'd like!)*
+
 
 ---
 
